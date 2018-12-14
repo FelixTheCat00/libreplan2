@@ -39,13 +39,13 @@ public class LoginPage {
 	WebElement aide_lien;
 	
 
-	public IndexPage clickSubmitButton() {
+	public CalendarPage clickSubmitButton() {
 		utilisateur_field.clear();
 		utilisateur_field.sendKeys(utilisateur_login);
 		mot_de_passe_login_field.clear();
 		mot_de_passe_login_field.sendKeys(mot_de_passe_login);
 		btn_se_connecter.submit();
-		return PageFactory.initElements(driver, IndexPage.class);
+		return PageFactory.initElements(driver, CalendarPage.class);
 	}
 	
 }

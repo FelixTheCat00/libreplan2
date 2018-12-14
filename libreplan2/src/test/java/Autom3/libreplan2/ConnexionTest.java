@@ -1,4 +1,3 @@
-
 package Autom3.libreplan2;
 
 import java.util.concurrent.TimeUnit;
@@ -6,12 +5,13 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
-public class LibrePlanTest {
+public class ConnexionTest {
 	WebDriver driver;
 
 	@Test
-	public void  libreplanTest() {
+	public CalendarPage  libreplanTest() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\formation\\Desktop\\SUT\\chromedriver.exe");
 		
 		WebDriver driver = new ChromeDriver();
@@ -25,9 +25,8 @@ public class LibrePlanTest {
 		
 		//Wait pour être sûr de cliquer sur le bouton
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		//cliquer sur le boutton se connecter de la page login
-		logpage.clickSubmitButton();
+		
+		return logpage.clickSubmitButton();
 	}
 	
 }
