@@ -55,6 +55,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 		RessourcesPage ressource_3 = creertype2.boutonAnnulerTypeCritere();
 		
 		ressource_3.assertTitle();
+		ressource_3.choisirDeuxiemeCritereListe();
 		
 		
 	}

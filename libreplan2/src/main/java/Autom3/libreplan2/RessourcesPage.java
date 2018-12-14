@@ -25,6 +25,11 @@ public class RessourcesPage extends GenericPage {
 	//Titre Types de critères liste
 	@FindBy(how = How.XPATH, using ="//div[contains(text(),'Types de')]")
 	WebElement titre_type_de_criteres;
+	
+	//Types de critères deuxième ligne
+	@FindBy(how = How.XPATH, using ="(//span[contains(text(),'Critère - Test bouton')])[1]")
+	WebElement deuxieme_ligne;
+	
 
 	public RessourcesPage(WebDriver driver) {
 		super(driver);
@@ -42,9 +47,13 @@ public class RessourcesPage extends GenericPage {
 		return PageFactory.initElements(driver, CreerTypeCriterePage.class);
 	}
 	
-	public void assertTitle() {
-		System.out.println("Titre : " +  this.titre_type_de_criteres.getText());
+	public void assertTitle() throws InterruptedException {
+		Thread.sleep(2000);
 		Assert.assertTrue("Vérification du titre", this.titre_type_de_criteres.getText().equals("Types de critères Liste"));
+	}
+	
+	public void choisirDeuxiemeCritereListe() {
+		deuxieme_ligne.click();
 	}
 
 }
