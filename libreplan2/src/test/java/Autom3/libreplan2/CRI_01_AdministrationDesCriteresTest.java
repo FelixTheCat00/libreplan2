@@ -30,8 +30,11 @@ public class CRI_01_AdministrationDesCriteresTest {
 		
 		System.out.println("Pas de test 3 - Créer un critère - Accès au formulaire--------------------");
 		//Cliquer sur le bouton de création d'un critère
-		ressource.clickButtonCreer();
+		CreerTypeCriterePage creertype = ressource.clickButtonCreer();
 		
+		System.out.println("Pas de test 4 - Créer un critère - Remplir le formulaire--------------------");
+
+		creertype.remplirFormulaire();
 		
 
 	}

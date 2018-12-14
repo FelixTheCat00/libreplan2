@@ -14,6 +14,11 @@ public class CalendarPage extends GenericPage {
 
 	@FindBy(how = How.XPATH, using ="//button[contains(text(),'Calendrier')]")
 	WebElement onglet_calendrier;
+	
+	@FindBy(how = How.XPATH, using ="input[@class='z-textbox z-textbox-text-invalid']")
+	WebElement field_name_project;
+	
+
 	public CalendarPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
