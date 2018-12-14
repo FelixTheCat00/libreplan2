@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
+import org.openqa.selenium.support.PageFactory;
 import org.junit.Assert;
 
 public class CreerTypeCriterePage extends RessourcesPage {
@@ -44,15 +44,25 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	//Bouton sauver et continuer
 	@FindBy(how = How.XPATH, using ="//div[@class='message_INFO']")
 	WebElement message_confirmation_ajout;
-	
+
+	//Bouton annuler
+	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Annuler')]")
+	WebElement bouton_annuler;	
+
+	//Champ titre
+	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Modifier')]")
+	WebElement title_field;
+
+
+
 	public CreerTypeCriterePage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void remplirFormulaire() {
-		this.champ_nom.clear();
-		this.champ_nom.sendKeys("Critère - Test bouton - 1");
+		this.clearName();
+		this.changeName("Critère - Test bouton");
 		this.btn_type_critere_participant.click();
 		this.type_critere_participant.click();
 		this.valeurMultipleBox();
@@ -60,10 +70,10 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		this.activeBox();
 		this.description_field.sendKeys("Critère - Test bouton");
 		this.clickSauverContinuer();
-		this.assertAjoutMessage();
+
 	}
 
-	
+
 	/*Méthode pour cocher la checkbox valeur multiples
 	 * */
 	public void valeurMultipleBox() {
@@ -83,7 +93,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 			this.hierarchie_box.clear();
 		}
 	}
-	
+
 	/*Méthode pour cocher la checkbox active
 	 * */
 	public void activeBox() {
@@ -93,12 +103,33 @@ public class CreerTypeCriterePage extends RessourcesPage {
 			this.active_box.clear();
 		}
 	}
-	
+
 	public void clickSauverContinuer(){
 		this.btn_sauver_continuer.click();
 	}
-	
+
 	public void assertAjoutMessage() {
 		Assert.assertTrue(message_confirmation_ajout.isDisplayed());
+	}
+
+	public void clearName() {
+		this.champ_nom.clear();
+	}
+	public void changeName(String s) {
+		if (s.equals(null)) {
+			this.champ_nom.sendKeys("Critère - Test bouton -"+3);
+		} else {
+			this.champ_nom.sendKeys(s);
+		}
+	}
+
+	public RessourcesPage boutonAnnulerTypeCritere() {
+		this.bouton_annuler.click();
+
+		return PageFactory.initElements(driver, RessourcesPage.class);
+	}
+
+	public void assertTitleCritere() {
+		Assert.assertTrue("Vérification de la présence du titre",this.title_field.getText().equals("Modifier Type de critère: Critère - Test bouton"));
 	}
 }
