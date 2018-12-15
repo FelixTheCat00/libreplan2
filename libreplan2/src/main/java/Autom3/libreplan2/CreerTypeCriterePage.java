@@ -196,13 +196,11 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	
 	public void assertEnregistrementCritere2() throws InterruptedException {
 		Thread.sleep(2000);
-		System.out.println(this.champ_confirmation_enregistrement_critere_2.getText());
 		Assert.assertTrue("Vérification de l'enregistrement du titre",this.champ_confirmation_enregistrement_critere_2.getText().equals("Type de critère \"Critères - Test bouton 2\" enregistré"));
 	}
 	
 	public void assertModifierEnregistrementTitreCritere2() throws InterruptedException {
 		Thread.sleep(2000);
-		System.out.println(this.champ_confirmation_enregistrement_critere_2.getText());
 		Assert.assertTrue("Vérification de l'enregistrement du titre",this.titre_modifier_enregistrement_critere_2.getText().equals("Modifier Type de critère: Critères - Test bouton 2"));
 	}
 	

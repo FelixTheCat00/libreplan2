@@ -73,23 +73,17 @@ public class CRI_01_AdministrationDesCriteresTest {
 		System.out.println("Pas de test 12 - modifier un critère - modification du nom");
 
 		creertype3.modifierChampNom("Critères - Test bouton 2");
+
+		
+		System.out.println("Pas de test 13 - modifier un critère - modification du nom");
+
 		creertype3.clickSauverContinuer();
 		creertype3.assertEnregistrementCritere2();
 		creertype3.assertModifierEnregistrementTitreCritere2();
 		
-		System.out.println("Pas de test 13 - modifier un critère - modification du nom");
-
-		/*ressource_3.assertTitle("Types de critères Liste");
-		
-		System.out.println("Pas de test 11 - 12 - 13 - accès à la colonne nom ----------------------------------");
-
-		creertype3.modifierChampNom("Critère - Test bouton 2");
-		creertype3.assertTitleModification();
-		creertype3.clickSauverContinuer();
-		creertype3.assertTitleSuppressionCritere2();
-
-		System.out.println("Pas de test 14 cliquer sur annuler ----------------------------------");
+		System.out.println("Pas de test 14 - Retour page d'administration des critères ");
 		creertype3.boutonAnnulerTypeCritere();
-	}*/
+		
+		
 	}
 }
