@@ -25,7 +25,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//span[contains(.,'Valeurs multiples par ressource')]/following::input[@type='checkbox'][1]")
 	WebElement valeur_multiple;
 
-	//boutojn hierarchie
+	//bouton hierarchie
 	@FindBy(how = How.XPATH, using ="//span[contains(.,'Hiérarchie')]/following::input[@type='checkbox'][1]")
 	WebElement hierarchie_box;
 
@@ -65,6 +65,8 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Modifier Type')]")
 	WebElement titre_modifier_enregistrement_critere_2;
 	
+	@FindBy(how = How.XPATH, using ="//table/descendant::td[contains(.,'Créer Type')]   ")
+	WebElement titre_creer_type_criteres;
 
 
 
@@ -207,6 +209,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		Assert.assertTrue("Vérification de l'enregistrement du titre",this.titre_modifier_enregistrement_critere_2.getText().equals("Modifier Type de critère: Critères - Test bouton 2"));
 	}
 	
-
+	public void assertFormulaireCreation() {}
+	
 	
 }

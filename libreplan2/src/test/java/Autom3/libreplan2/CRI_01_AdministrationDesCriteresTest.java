@@ -29,7 +29,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 		//Accès à la liste des types de critères
 		TypeCritereListPage tclp = calendar.ressourceOngletCritere();
 		tclp.assertTypeCritereListePage();
-		/*System.out.println("Pas de test 3 - Créer un critère - Accès au formulaire");
+		System.out.println("Pas de test 3 - Créer un critère - Accès au formulaire");
 		//Cliquer sur le bouton de création d'un critère
 		CreerTypeCriterePage creertype = tclp.clickButtonCreer();
 
@@ -95,7 +95,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 		
 		System.out.println("Pas de test 18 - Supprimer un critère - Bouton[OK]");
 		tcl4.clickPopUpOK();
-*/
+
 
 	}
 }
