@@ -56,12 +56,12 @@ public class GenericPage {
 	@FindBy(how = How.XPATH, using ="//button[contains(text(),'Calendrier')]")
 	WebElement onglet_calendrier;
 	
-	public RessourcesPage ressourceOngletCritere() {
+	public TypeCritereListPage ressourceOngletCritere() {
 
 			Actions actions = new Actions(driver);
 			actions.moveToElement(onglet_ressources).build().perform();
 			driver.findElement(By.xpath("(//a[contains(text(),'Critère')])[1]")).click();
-			return PageFactory.initElements(driver, RessourcesPage.class);
+			return PageFactory.initElements(driver, TypeCritereListPage.class);
 
 		}
 	 
