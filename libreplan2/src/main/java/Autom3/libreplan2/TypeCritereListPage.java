@@ -1,12 +1,17 @@
 package Autom3.libreplan2;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import com.sun.jna.platform.FileUtils;
+
+import java.io.File;
 import java.util.List;
 
 import org.junit.Assert;
@@ -75,6 +80,9 @@ public class TypeCritereListPage extends RessourcesPage {
 	public void assertTypeCritereListePage() throws Exception {
 		try {
 			Assert.assertTrue("Vérification présence bouton créer", this.button_creer_ressources.isDisplayed());
+			TakesScreenshot ts = (TakesScreenshot)driver;
+			File source = ts.getScreenshotAs(OutputType.FILE);
+			//FileUtils.copyFile(source, new File(".Screenshot/Assert.png"));
 		} catch(AssertionError e) {
 			System.out.println("La présence du bouton créer n'est pas vérifier");
 			throw e;
