@@ -30,6 +30,10 @@ public class RessourcesPage extends GenericPage {
 	@FindBy(how = How.XPATH, using ="(//span[contains(text(),'Critère - Test bouton')])[1]")
 	WebElement deuxieme_ligne;
 	
+	//Types de critères deuxième ligne
+	@FindBy(how = How.XPATH, using ="//td[contains(text(),'2')]")
+	WebElement titre_type_de_criteres2;
+	
 
 	public RessourcesPage(WebDriver driver) {
 		super(driver);
@@ -41,19 +45,30 @@ public class RessourcesPage extends GenericPage {
 		return PageFactory.initElements(driver, CreerTypeCriterePage.class);
 	}
 	
+
 	public CreerTypeCriterePage clickBoutonModifierCritere() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		this.critere_test_bouton_modifier.click();
 		return PageFactory.initElements(driver, CreerTypeCriterePage.class);
 	}
 	
-	public void assertTitle() throws InterruptedException {
+	public void assertTitle(String s) throws InterruptedException {
 		Thread.sleep(2000);
+		System.out.println(this.titre_type_de_criteres.getText());
 		Assert.assertTrue("Vérification du titre", this.titre_type_de_criteres.getText().equals("Types de critères Liste"));
 	}
 	
-	public void choisirDeuxiemeCritereListe() {
-		deuxieme_ligne.click();
+	public void assertTitleModification() throws InterruptedException {
+		Thread.sleep(8000);
+		Assert.assertTrue(this.titre_type_de_criteres2.getText().equals("Modifier Type de critère: Critère - Test bouton 2"));
 	}
+	
+	public CreerTypeCriterePage choisirDeuxiemeCritereListe() throws Exception {
+		Thread.sleep(2000);
+		deuxieme_ligne.click();
+		return PageFactory.initElements(driver, CreerTypeCriterePage.class);
+	}
+	
+	
 
 }

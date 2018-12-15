@@ -17,7 +17,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//td[@class='z-comboitem-text' and contains(.,'PARTICIPANT')]")
 	WebElement type_critere_participant;
 
-	//Type de critère menu déroulant
+	//Type de critère bouton menu déroulant
 	@FindBy(how = How.XPATH, using ="//i[@class='z-combobox-btn']")
 	WebElement btn_type_critere_participant;
 
@@ -52,6 +52,18 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	//Champ titre
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Modifier')]")
 	WebElement title_field;
+	
+	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Test bouton 2')]")
+	WebElement title_suppression_critere_2;
+	
+	@FindBy(how = How.XPATH, using ="//td[@class='z-button-cm' and contains(.,'Enregistrer')]")
+	WebElement enregistrer;
+	
+	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Test bouton 2')]")
+	WebElement champ_confirmation_enregistrement_critere_2;
+
+	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Modifier Type')]")
+	WebElement titre_modifier_enregistrement_critere_2;
 
 
 
@@ -60,7 +72,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void remplirFormulaire() {
+	public TypeCritereListPage remplirFormulaireAnnulation() throws Exception {
 		this.clearName();
 		this.changeName("Critère - Test bouton");
 		this.btn_type_critere_participant.click();
@@ -69,8 +81,33 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		this.hierarchieBox();
 		this.activeBox();
 		this.description_field.sendKeys("Critère - Test bouton");
-		this.clickSauverContinuer();
+		this.boutonAnnulerTypeCritere();
+		return PageFactory.initElements(driver, TypeCritereListPage.class);
+	}
 
+	public void remplirFormulaireSauverContinuer() throws InterruptedException {
+		this.clearName();
+		this.changeName("Critère - Test bouton");
+		this.choixDuTypeParticipant();
+		this.valeurMultipleBox();
+		this.hierarchieBox();
+		this.activeBox();
+		this.description_field.sendKeys("Critère - Test bouton");
+		this.clickSauverContinuer();
+		
+	}
+	
+	public TypeCritereListPage remplirFormulaireEnregister() {
+		this.clearName();
+		this.changeName("Critère - Test bouton");
+		this.btn_type_critere_participant.click();
+		this.type_critere_participant.click();
+		this.valeurMultipleBox();
+		this.hierarchieBox();
+		this.activeBox();
+		this.description_field.sendKeys("Critère - Test bouton");
+		this.clickEnregistrer();
+		return PageFactory.initElements(driver, TypeCritereListPage.class);
 	}
 
 
@@ -123,13 +160,50 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		}
 	}
 
-	public RessourcesPage boutonAnnulerTypeCritere() {
+	public TypeCritereListPage boutonAnnulerTypeCritere() throws Exception {
+		Thread.sleep(2000);
 		this.bouton_annuler.click();
 
-		return PageFactory.initElements(driver, RessourcesPage.class);
+		return PageFactory.initElements(driver, TypeCritereListPage.class);
 	}
 
-	public void assertTitleCritere() {
+	public void assertTitleCritere() throws InterruptedException {
+		Thread.sleep(2000);
 		Assert.assertTrue("Vérification de la présence du titre",this.title_field.getText().equals("Modifier Type de critère: Critère - Test bouton"));
 	}
+	
+	public void modifierChampNom(String s) {
+		this.champ_nom.clear();
+		this.champ_nom.sendKeys(s);
+	}
+	
+	public void assertTitleSuppressionCritere2() throws InterruptedException {
+		Thread.sleep(2000);
+		Assert.assertTrue(this.titre_type_de_criteres2.isDisplayed());
+	}
+	
+	public TypeCritereListPage clickEnregistrer() {
+		this.enregistrer.click();
+		return PageFactory.initElements(driver, TypeCritereListPage.class);
+
+	}
+	
+	public void choixDuTypeParticipant() throws InterruptedException {
+		Thread.sleep(2000);
+		btn_type_critere_participant.click();
+		type_critere_participant.click();
+	}
+	
+	public void assertEnregistrementCritere2() throws InterruptedException {
+		Thread.sleep(2000);
+		System.out.println(this.champ_confirmation_enregistrement_critere_2.getText());
+		Assert.assertTrue("Vérification de l'enregistrement du titre",this.champ_confirmation_enregistrement_critere_2.getText().equals("Type de critère \"Critères - Test bouton 2\" enregistré"));
+	}
+	
+	public void assertModifierEnregistrementTitreCritere2() throws InterruptedException {
+		Thread.sleep(2000);
+		System.out.println(this.champ_confirmation_enregistrement_critere_2.getText());
+		Assert.assertTrue("Vérification de l'enregistrement du titre",this.titre_modifier_enregistrement_critere_2.getText().equals("Modifier Type de critère: Critères - Test bouton 2"));
+	}
+	
 }
