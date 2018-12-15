@@ -64,6 +64,9 @@ public class CreerTypeCriterePage extends RessourcesPage {
 
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Modifier Type')]")
 	WebElement titre_modifier_enregistrement_critere_2;
+	
+
+
 
 
 
@@ -203,5 +206,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		Thread.sleep(2000);
 		Assert.assertTrue("Vérification de l'enregistrement du titre",this.titre_modifier_enregistrement_critere_2.getText().equals("Modifier Type de critère: Critères - Test bouton 2"));
 	}
+	
+
 	
 }

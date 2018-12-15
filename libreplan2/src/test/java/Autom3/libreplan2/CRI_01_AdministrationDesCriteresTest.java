@@ -15,7 +15,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 
 	@Test
 	public void  libreplanTest() throws Exception {
-		System.out.println("Pas de test 1 - Connexion---------------------------------------------------");
+		System.out.println("Pas de test 1 - Connexion");
 
 		//Connexion à l'application
 		ConnexionTest pou = new ConnexionTest();
@@ -24,43 +24,43 @@ public class CRI_01_AdministrationDesCriteresTest {
 		//Vérification de la page calendar
 		calendar.assertCalendrier();
 
-		System.out.println("Pas de test 2 - Accès à la page d'administration des critères---------------");
+		System.out.println("Pas de test 2 - Accès à la page d'administration des critères");
 
 		//Accès à la liste des types de critères
 		RessourcesPage ressource = calendar.ressourceOngletCritere();
 
-		System.out.println("Pas de test 3 - Créer un critère - Accès au formulaire----------------------");
+		System.out.println("Pas de test 3 - Créer un critère - Accès au formulaire");
 		//Cliquer sur le bouton de création d'un critère
 		CreerTypeCriterePage creertype = ressource.clickButtonCreer();
 
-		System.out.println("Pas de test 4 - Créer un critère - Annuler ---------------------------------");
+		System.out.println("Pas de test 4 - Créer un critère - Annuler ");
 
 		TypeCritereListPage tcl = creertype.remplirFormulaireAnnulation();
 
-		System.out.println("Pas de test 5 - Créer un critère - Enregistrer ---------------------------------");
+		System.out.println("Pas de test 5 - Créer un critère - Enregistrer ");
 
 		CreerTypeCriterePage creetype1 = tcl.clickButtonCreer();
 		TypeCritereListPage tcl1 = creetype1.remplirFormulaireEnregister();
 
-		System.out.println("Pas de test 6 - Créer un critère - Accès au formulaire -------------------------");
+		System.out.println("Pas de test 6 - Créer un critère - Accès au formulaire");
 
 		CreerTypeCriterePage creetype2 = tcl1.clickButtonCreer();
 
-		System.out.println("Pas de test 7 - Créer un critère - Sauver et continuer -------------------------");
+		System.out.println("Pas de test 7 - Créer un critère - Sauver et continuer");
 		// Il faudra supprimer effctuer cette méthode
 		creetype2.remplirFormulaireSauverContinuer();
 
-		System.out.println("Pas de test 8 - cliquer sur le bouton annuler ------------------------------");
+		System.out.println("Pas de test 8 - cliquer sur le bouton annuler ");
 
 		TypeCritereListPage ressource_2 = creertype.boutonAnnulerTypeCritere();
 
 
-		System.out.println("Pas de test 9 - cliquer sur le bouton modifier -----------------------------");
+		System.out.println("Pas de test 9 - cliquer sur le bouton modifier");
 
 		CreerTypeCriterePage creertype2 = ressource_2.clickBoutonModifierCritere();
 		creertype2.assertTitleCritere();
 
-		System.out.println("Pas de test 10 - modifier un critère - bouton annuler ----------------------");
+		System.out.println("Pas de test 10 - modifier un critère - bouton annuler ");
 
 		creertype2.clearName();
 		creertype2.changeName("Critère - Test bouton - 2");
@@ -82,8 +82,20 @@ public class CRI_01_AdministrationDesCriteresTest {
 		creertype3.assertModifierEnregistrementTitreCritere2();
 		
 		System.out.println("Pas de test 14 - Retour page d'administration des critères ");
-		creertype3.boutonAnnulerTypeCritere();
+		TypeCritereListPage tcl4 = creertype3.boutonAnnulerTypeCritere();
 		
+		System.out.println("Pas de test 15 - Supprimer un critère - Pop-up de confirmation");
+		tcl4.clickSuppressionCritere2();
 		
+		System.out.println("Pas de test 16 - Supprimer un critère - Bouton[Annuler]");
+		tcl4.clickPopUpAnnuler();
+		
+		System.out.println("Pas de test 17 - Supprimer un critère - Pop up de confirmation");
+		tcl4.clickSuppressionCritere2();
+		
+		System.out.println("Pas de test 18 - Supprimer un critère - Bouton[OK]");
+		tcl4.clickPopUpOK();
+
+
 	}
 }
