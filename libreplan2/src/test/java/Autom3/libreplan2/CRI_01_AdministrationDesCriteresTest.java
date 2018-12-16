@@ -46,12 +46,14 @@ public class CRI_01_AdministrationDesCriteresTest {
 		tcl.assertTitle();
 		tcl.assertFalseBoutonAnnuler();
 
-	/*	System.out.println("Pas de test 5 - Créer un critère - Enregistrer ");
+		System.out.println("Pas de test 5 - Créer un critère - Enregistrer ");
 
 		CreerTypeCriterePage creetype1 = tcl.clickButtonCreer();
 		TypeCritereListPage tcl1 = creetype1.remplirFormulaireEnregister();
 
-		System.out.println("Pas de test 6 - Créer un critère - Accès au formulaire");
+		tcl1.assertTitle();
+		tcl1.assertCritereTestBoutonTableau();
+	/*	System.out.println("Pas de test 6 - Créer un critère - Accès au formulaire");
 
 		CreerTypeCriterePage creetype2 = tcl1.clickButtonCreer();
 

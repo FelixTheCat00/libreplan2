@@ -55,11 +55,13 @@ public class TypeCritereListPage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//td[@class='z-button-cm' and contains(.,'Annuler')]")
 	WebElement bouton_annuler;
 
+	@FindBy(how = How.XPATH, using ="//span[@title='Critère - Test bouton']")
+	WebElement presence_critere_test_bouton;
+
 
 
 	public TypeCritereListPage(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
+		super(driver);	
 	}
 
 
@@ -150,5 +152,17 @@ public class TypeCritereListPage extends RessourcesPage {
 			throw e;
 		}
 	}
+	
+	public void assertCritereTestBoutonTableau() throws InterruptedException {
+		Thread.sleep(2000);
+		try {
+			Assert.assertTrue("Ajout à la liste de \'Critère - Test bouton \'", this.presence_critere_test_bouton.isDisplayed());
+		}catch(AssertionError e) {
+			System.out.println("Le \'Critère - Test bouton \' n'a pas été rajouté à la liste");
+			throw e;
+		}
+	}
+	
+	
 
 }
