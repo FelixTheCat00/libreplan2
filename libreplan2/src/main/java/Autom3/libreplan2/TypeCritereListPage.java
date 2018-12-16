@@ -57,6 +57,15 @@ public class TypeCritereListPage extends RessourcesPage {
 
 	@FindBy(how = How.XPATH, using ="//span[@title='Critère - Test bouton']")
 	WebElement presence_critere_test_bouton;
+	
+	@FindBy(how = How.XPATH, using ="//span[@title='Critère - Test bouton' and contains(text(),'Critères - Test bouton 2')]")
+	WebElement presence_critere_test_bouton2;
+	
+	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Supprimer Type de critère \"Critères - Test bouton 2\". Êtes-vous sûr ?')]")
+	WebElement message_confirmation_suppression_2;
+
+	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Critères - Test bouton 2')]")
+	WebElement message_critere_2_suppression_confirmation;
 
 
 
@@ -153,7 +162,7 @@ public class TypeCritereListPage extends RessourcesPage {
 		}
 	}
 	
-	public void assertCritereTestBoutonTableau() throws InterruptedException {
+	public void assertCritereTestBoutonTableau() throws Exception {
 		Thread.sleep(2000);
 		try {
 			Assert.assertTrue("Ajout à la liste de \'Critère - Test bouton \'", this.presence_critere_test_bouton.isDisplayed());
@@ -163,6 +172,76 @@ public class TypeCritereListPage extends RessourcesPage {
 		}
 	}
 	
+	public void assertCritereTestBoutonTableau2() throws Exception {
+		Thread.sleep(2000);
+		try {
+			Assert.assertTrue("Ajout à la liste de \'Critère - Test bouton 2\'", this.presence_critere_test_bouton2.isDisplayed());
+		}catch(AssertionError e) {
+			System.out.println("Le \'Critère - Test bouton \' n'a pas été rajouté à la liste");
+			throw e;
+		}
+	}
+	
+	
+	
+	public void assertNonModification() throws Exception {
+		Thread.sleep(2000);
+		try {
+			Assert.assertTrue("Non modification du titre du critère", this.presence_critere_test_bouton.getText().equals("Critère - Test bouton"));
+		} catch (AssertionError e) {
+			System.out.println(" \'Critère - Test bouton\' a été modifié dans le tableau");
+			throw e;
+		}
+
+	}
+	
+	public void assertPopUpConfirmation2() throws Exception {
+		Thread.sleep(2000);
+		try {
+			Assert.assertTrue("Pop : confirmation suppression", this.message_confirmation_suppression_2.getText().equals("Supprimer Type de critère \"Critères - Test bouton 2\". Êtes-vous sûr ?"));
+		} catch (Exception e) {
+			System.out.println("Le message de confirmation de suppression de la pop up est incorrect ou ne s'est pas afficher.");
+			throw e;
+		}
+			
+		try {
+			Assert.assertTrue("Présence du bouton annuler", this.pop_up_bouton_annuler.isDisplayed());
+		} catch (Exception e) {
+			System.out.println("Le bouton \'Annuler\' nest pas présent");
+			throw e;
+		}
+			
+		try {
+			Assert.assertTrue("Présence du bouton Ok", this.pop_up_bouton_ok.isDisplayed());
+		} catch (Exception e) {
+			System.out.println("Le bouton \'Ok\' nest pas présent");
+			throw e;
+		}
+
+	}
+	
+	public void assertConfirmationSupression2() throws InterruptedException {
+		Thread.sleep(2000);
+		try {
+			Assert.assertFalse("Suppression du \'Critère - Test bouton 2\'", this.presence_critere_test_bouton2.isDisplayed());
+		}catch(AssertionError e) {
+			System.out.println("Le \'Critère - Test bouton 2\' n'a pas été supprimé.");
+			throw e;
+		}
+	}
+	
+	public void assertConfirmationSuppressionCritere2() throws Exception {
+		Thread.sleep(2000);
+
+		try {
+			Assert.assertTrue("Message confirmation suppression critère 2", this.message_critere_2_suppression_confirmation.isDisplayed());
+		} catch (Exception e) {
+			System.out.println("Le message de confirmation de suppression du critère 2 ne s'est pas affiché!");
+			throw e;
+		}
+
+
+	}
 	
 
 }

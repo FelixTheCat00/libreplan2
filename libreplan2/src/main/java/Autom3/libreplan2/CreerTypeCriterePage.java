@@ -166,6 +166,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		if (s.equals(null)) {
 			this.champ_nom.sendKeys("Critère - Test bouton -"+3);
 		} else {
+			this.champ_nom.clear();
 			this.champ_nom.sendKeys(s);
 		}
 	}
@@ -204,17 +205,29 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		type_critere_participant.click();
 	}
 	
-	public void assertEnregistrementCritere2() throws InterruptedException {
+	public void assertEnregistrementCritere2() throws Exception {
 		Thread.sleep(2000);
-		Assert.assertTrue("Vérification de l'enregistrement du titre",this.champ_confirmation_enregistrement_critere_2.getText().equals("Type de critère \"Critères - Test bouton 2\" enregistré"));
+		try {
+			Assert.assertTrue("Vérification de l'enregistrement du titre",this.champ_confirmation_enregistrement_critere_2.getText().equals("Type de critère \"Critères - Test bouton 2\" enregistré"));
+		} catch (Exception e) {
+			System.out.println("Le titre n'a paqs été enregistré");
+			throw e;
+		}
 	}
 	
-	public void assertModifierEnregistrementTitreCritere2() throws InterruptedException {
+	public void assertModifierEnregistrementTitreCritere2() throws Exception {
+		this.titre_modifier_enregistrement_critere_2.click();
 		Thread.sleep(2000);
-		Assert.assertTrue("Vérification de l'enregistrement du titre",this.titre_modifier_enregistrement_critere_2.getText().equals("Modifier Type de critère: Critères - Test bouton 2"));
+		try {
+			Assert.assertTrue("Vérification de l'enregistrement du titre",this.titre_modifier_enregistrement_critere_2.getText().equals("Modifier Type de critère: Critères - Test bouton 2"));
+		} catch (Exception e) {
+			System.out.println("Le titre \'Modifier Type de critère: Critères - Test bouton 2\' n'a pas été pris en compte.");
+			throw e;
+		}
 	}
 	
-	public void assertCreerTypeCriterePage() {
+	public void assertCreerTypeCriterePage() throws InterruptedException {
+		Thread.sleep(2000);
 		Assert.assertTrue("Vérification de la présense du titre",this.titre_creer_type_criteres.isDisplayed());
 		Assert.assertTrue("Vérification de la présense de l'onglet modifier",this.onglet_modifier.isDisplayed());
 		Assert.assertTrue("Vérification de la présense du bouton annuler",this.bouton_annuler.isDisplayed());

@@ -59,7 +59,7 @@ public class RessourcesPage extends GenericPage {
 	}
 	
 	public void assertTitleModification() throws InterruptedException {
-		Thread.sleep(8000);
+		Thread.sleep(2000);
 		Assert.assertTrue(this.titre_type_de_criteres2.getText().equals("Modifier Type de critère: Critère - Test bouton 2"));
 	}
 	

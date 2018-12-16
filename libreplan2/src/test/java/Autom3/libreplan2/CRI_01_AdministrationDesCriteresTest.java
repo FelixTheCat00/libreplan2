@@ -53,18 +53,20 @@ public class CRI_01_AdministrationDesCriteresTest {
 
 		tcl1.assertTitle();
 		tcl1.assertCritereTestBoutonTableau();
-	/*	System.out.println("Pas de test 6 - Créer un critère - Accès au formulaire");
+		System.out.println("Pas de test 6 - Créer un critère - Accès au formulaire");
 
 		CreerTypeCriterePage creetype2 = tcl1.clickButtonCreer();
-
+		creetype2.assertCreerTypeCriterePage();
 		System.out.println("Pas de test 7 - Créer un critère - Sauver et continuer");
-		// Il faudra supprimer effctuer cette méthode
+		// Il faudra supprimer ou effectuer cette méthode
 		creetype2.remplirFormulaireSauverContinuer();
 
 		System.out.println("Pas de test 8 - cliquer sur le bouton annuler ");
 
 		TypeCritereListPage ressource_2 = creertype.boutonAnnulerTypeCritere();
 
+		ressource_2.assertTitle();
+		ressource_2.assertCritereTestBoutonTableau();
 
 		System.out.println("Pas de test 9 - cliquer sur le bouton modifier");
 
@@ -73,18 +75,20 @@ public class CRI_01_AdministrationDesCriteresTest {
 
 		System.out.println("Pas de test 10 - modifier un critère - bouton annuler ");
 
-		creertype2.clearName();
 		creertype2.changeName("Critère - Test bouton - 2");
 		TypeCritereListPage tcl3 = creertype2.boutonAnnulerTypeCritere();
+		tcl3.assertTitle();
+		tcl3.assertNonModification();
 
 		System.out.println("Pas de test 11 - modifier un critère - accès formulaire de modification colonne nom");
 
 		CreerTypeCriterePage creertype3 = tcl3.choisirDeuxiemeCritereListe();
 
+		creertype3.assertTitleCritere();
 		System.out.println("Pas de test 12 - modifier un critère - modification du nom");
 
 		creertype3.modifierChampNom("Critères - Test bouton 2");
-
+		creertype3.assertModifierEnregistrementTitreCritere2();
 
 		System.out.println("Pas de test 13 - modifier un critère - modification du nom");
 
@@ -94,18 +98,23 @@ public class CRI_01_AdministrationDesCriteresTest {
 
 		System.out.println("Pas de test 14 - Retour page d'administration des critères ");
 		TypeCritereListPage tcl4 = creertype3.boutonAnnulerTypeCritere();
-
+		tcl4.assertTitle();
+		tcl4.assertCritereTestBoutonTableau2();
+		
 		System.out.println("Pas de test 15 - Supprimer un critère - Pop-up de confirmation");
 		tcl4.clickSuppressionCritere2();
-
+		tcl4.assertPopUpConfirmation2();
 		System.out.println("Pas de test 16 - Supprimer un critère - Bouton[Annuler]");
 		tcl4.clickPopUpAnnuler();
+		tcl4.assertCritereTestBoutonTableau2();
 
 		System.out.println("Pas de test 17 - Supprimer un critère - Pop up de confirmation");
 		tcl4.clickSuppressionCritere2();
-
+		tcl4.assertPopUpConfirmation2();
+		
 		System.out.println("Pas de test 18 - Supprimer un critère - Bouton[OK]");
-		tcl4.clickPopUpOK();*/
+		tcl4.clickPopUpOK();
+		tcl4.assertConfirmationSuppressionCritere2();
 
 
 	}
