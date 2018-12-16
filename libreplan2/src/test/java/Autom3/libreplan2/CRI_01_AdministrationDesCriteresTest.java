@@ -1,10 +1,14 @@
 
 package Autom3.libreplan2;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -29,15 +33,20 @@ public class CRI_01_AdministrationDesCriteresTest {
 		//Accès à la liste des types de critères
 		TypeCritereListPage tclp = calendar.ressourceOngletCritere();
 		tclp.assertTypeCritereListePage();
+
+
 		System.out.println("Pas de test 3 - Créer un critère - Accès au formulaire");
 		//Cliquer sur le bouton de création d'un critère
 		CreerTypeCriterePage creertype = tclp.clickButtonCreer();
+		creertype.assertCreerTypeCriterePage();
 
 		System.out.println("Pas de test 4 - Créer un critère - Annuler ");
 
 		TypeCritereListPage tcl = creertype.remplirFormulaireAnnulation();
+		tcl.assertTitle();
+		tcl.assertFalseBoutonAnnuler();
 
-		System.out.println("Pas de test 5 - Créer un critère - Enregistrer ");
+	/*	System.out.println("Pas de test 5 - Créer un critère - Enregistrer ");
 
 		CreerTypeCriterePage creetype1 = tcl.clickButtonCreer();
 		TypeCritereListPage tcl1 = creetype1.remplirFormulaireEnregister();
@@ -65,36 +74,36 @@ public class CRI_01_AdministrationDesCriteresTest {
 		creertype2.clearName();
 		creertype2.changeName("Critère - Test bouton - 2");
 		TypeCritereListPage tcl3 = creertype2.boutonAnnulerTypeCritere();
-		
+
 		System.out.println("Pas de test 11 - modifier un critère - accès formulaire de modification colonne nom");
 
 		CreerTypeCriterePage creertype3 = tcl3.choisirDeuxiemeCritereListe();
-		
+
 		System.out.println("Pas de test 12 - modifier un critère - modification du nom");
 
 		creertype3.modifierChampNom("Critères - Test bouton 2");
 
-		
+
 		System.out.println("Pas de test 13 - modifier un critère - modification du nom");
 
 		creertype3.clickSauverContinuer();
 		creertype3.assertEnregistrementCritere2();
 		creertype3.assertModifierEnregistrementTitreCritere2();
-		
+
 		System.out.println("Pas de test 14 - Retour page d'administration des critères ");
 		TypeCritereListPage tcl4 = creertype3.boutonAnnulerTypeCritere();
-		
+
 		System.out.println("Pas de test 15 - Supprimer un critère - Pop-up de confirmation");
 		tcl4.clickSuppressionCritere2();
-		
+
 		System.out.println("Pas de test 16 - Supprimer un critère - Bouton[Annuler]");
 		tcl4.clickPopUpAnnuler();
-		
+
 		System.out.println("Pas de test 17 - Supprimer un critère - Pop up de confirmation");
 		tcl4.clickSuppressionCritere2();
-		
+
 		System.out.println("Pas de test 18 - Supprimer un critère - Bouton[OK]");
-		tcl4.clickPopUpOK();
+		tcl4.clickPopUpOK();*/
 
 
 	}

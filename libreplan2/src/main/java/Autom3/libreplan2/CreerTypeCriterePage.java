@@ -39,15 +39,18 @@ public class CreerTypeCriterePage extends RessourcesPage {
 
 	//Bouton sauver et continuer
 	@FindBy(how = How.XPATH, using ="//td[@class='z-button-cm' and contains(.,'Sauver et continuer')]")
-	WebElement btn_sauver_continuer;
-
-	//Bouton sauver et continuer
-	@FindBy(how = How.XPATH, using ="//div[@class='message_INFO']")
-	WebElement message_confirmation_ajout;
+	WebElement bouton_sauver_continuer;
 
 	//Bouton annuler
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Annuler')]")
 	WebElement bouton_annuler;	
+	
+	@FindBy(how = How.XPATH, using ="//td[@class='z-button-cm' and contains(.,'Enregistrer')]")
+	WebElement bouton_enregistrer;
+	
+	//Message de confirmation d'ajout
+	@FindBy(how = How.XPATH, using ="//div[@class='message_INFO']")
+	WebElement message_confirmation_ajout;
 
 	//Champ titre
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Modifier')]")
@@ -56,8 +59,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Test bouton 2')]")
 	WebElement title_suppression_critere_2;
 	
-	@FindBy(how = How.XPATH, using ="//td[@class='z-button-cm' and contains(.,'Enregistrer')]")
-	WebElement enregistrer;
+
 	
 	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Test bouton 2')]")
 	WebElement champ_confirmation_enregistrement_critere_2;
@@ -65,8 +67,11 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'Modifier Type')]")
 	WebElement titre_modifier_enregistrement_critere_2;
 	
-	@FindBy(how = How.XPATH, using ="//table/descendant::td[contains(.,'Créer Type')]   ")
+	@FindBy(how = How.XPATH, using ="//table/descendant::td[contains(.,'Créer Type')]")
 	WebElement titre_creer_type_criteres;
+	
+	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Modifier')]")
+	WebElement onglet_modifier;
 
 
 
@@ -147,7 +152,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	}
 
 	public void clickSauverContinuer(){
-		this.btn_sauver_continuer.click();
+		this.bouton_sauver_continuer.click();
 	}
 
 	public void assertAjoutMessage() {
@@ -188,7 +193,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	}
 	
 	public TypeCritereListPage clickEnregistrer() {
-		this.enregistrer.click();
+		this.bouton_enregistrer.click();
 		return PageFactory.initElements(driver, TypeCritereListPage.class);
 
 	}
@@ -209,7 +214,14 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		Assert.assertTrue("Vérification de l'enregistrement du titre",this.titre_modifier_enregistrement_critere_2.getText().equals("Modifier Type de critère: Critères - Test bouton 2"));
 	}
 	
-	public void assertFormulaireCreation() {}
+	public void assertCreerTypeCriterePage() {
+		Assert.assertTrue("Vérification de la présense du titre",this.titre_creer_type_criteres.isDisplayed());
+		Assert.assertTrue("Vérification de la présense de l'onglet modifier",this.onglet_modifier.isDisplayed());
+		Assert.assertTrue("Vérification de la présense du bouton annuler",this.bouton_annuler.isDisplayed());
+		Assert.assertTrue("Vérification de la présense du bouton enregistrer",this.bouton_enregistrer.isDisplayed());
+		Assert.assertTrue("Vérification de la présense du bouton sauver et continuer",this.bouton_sauver_continuer.isDisplayed());
+
+	}
 	
 	
 }

@@ -8,11 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.apache.commons.io.FileUtils;
 
-import com.sun.jna.platform.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 
@@ -47,6 +49,11 @@ public class TypeCritereListPage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//div[@class='z-column-cnt' and contains(.,'Opérations')]")
 	WebElement table_titre_operations;
 
+	@FindBy(how = How.XPATH, using ="//div[contains(text(),'Types de critères Liste')]")
+	WebElement type_critere_titre;
+
+	@FindBy(how = How.XPATH, using ="//td[@class='z-button-cm' and contains(.,'Annuler')]")
+	WebElement bouton_annuler;
 
 
 
@@ -80,50 +87,68 @@ public class TypeCritereListPage extends RessourcesPage {
 	public void assertTypeCritereListePage() throws Exception {
 		try {
 			Assert.assertTrue("Vérification présence bouton créer", this.button_creer_ressources.isDisplayed());
-			TakesScreenshot ts = (TakesScreenshot)driver;
-			File source = ts.getScreenshotAs(OutputType.FILE);
-			//FileUtils.copyFile(source, new File(".Screenshot/Assert.png"));
+			
 		} catch(AssertionError e) {
 			System.out.println("La présence du bouton créer n'est pas vérifier");
 			throw e;
 		}
 
 		try {
-			Assert.assertTrue("Vérification présence bouton créer", this.table_titre_nom.getText().equals("Nom"));
-		} catch(AssertionError e) {
+			Assert.assertTrue("Vérification présence titre nom du tableau", this.table_titre_nom.getText().equals("Nom"));
+			
+		} catch(Exception e) {
 			System.out.println("La présence du titre de la colonne \'Nom\' de la table n'est pas vérifiée");
 			throw e;
 		}
 
 		try {
-			Assert.assertTrue("Vérification présence bouton créer", this.table_titre_code.getText().equals("Code"));
+			Assert.assertTrue("Vérification présence titre code du tableau", this.table_titre_code.getText().equals("Code"));
 		} catch(AssertionError e) {
 			System.out.println("La présence du titre de la colonne \'Code\' de la table n'est pas vérifiée");
 			throw e;
 		}
 
 		try {
-			Assert.assertTrue("Vérification présence bouton créer", this.table_titre_type.getText().equals("Type"));
+			Assert.assertTrue("Vérification présence titre type du tableau", this.table_titre_type.getText().equals("Type"));
 		}catch(AssertionError e) {
 			System.out.println("La présence du titre de la colonne \'Type\' de la table n'est pas vérifiée");
 			throw e;
 		}
 
 		try {
-			Assert.assertTrue("Vérification présence bouton créer", this.table_titre_active.getText().equals("Activé"));
+			Assert.assertTrue("Vérification présence titre active du tableau", this.table_titre_active.getText().equals("Activé"));
 		}catch(AssertionError e) {
 			System.out.println("La présence du titre de la colonne \'Activé\' de la table n'est pas vérifiée");
 			throw e;
 		}
 
 		try {
-			Assert.assertTrue("Vérification présence bouton créer", this.table_titre_operations.getText().equals("Opérations"));
+			Assert.assertTrue("Vérification présence titre opération du tableau", this.table_titre_operations.getText().equals("Opérations"));
 		}catch(AssertionError e) {
 			System.out.println("La présence du titre de la colonne \'Opérations\' de la table n'est pas vérifiée");
 			throw e;
 		}
 
 	}
+	
+	public void assertTitle() throws Exception {
+		Thread.sleep(2000);
+		try {
+			Assert.assertTrue("Vérification présence titre Types de critères Liste", this.titre_type_de_criteres.isDisplayed());
+		}catch(AssertionError e) {
+			System.out.println("La présence du titre du titre \'Types de critères Liste\' n'est pas vérifiée");
+			throw e;
+		}
+	}
 
+	public void assertFalseBoutonAnnuler() throws InterruptedException {
+		Thread.sleep(2000);
+		try {
+			Assert.assertFalse("Le bouton annuler n'est pas présent", this.bouton_annuler.isDisplayed());
+		}catch(AssertionError e) {
+			System.out.println("La présence du titre du titre \'Types de critères Liste\' n'est pas vérifiée");
+			throw e;
+		}
+	}
 
 }
