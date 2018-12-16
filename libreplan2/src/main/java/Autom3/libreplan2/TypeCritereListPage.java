@@ -143,7 +143,7 @@ public class TypeCritereListPage extends RessourcesPage {
 	}
 	
 	public void assertTitle() throws Exception {
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		try {
 			Assert.assertTrue("Vérification présence titre Types de critères Liste", this.titre_type_de_criteres.isDisplayed());
 		}catch(AssertionError e) {

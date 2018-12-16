@@ -2,8 +2,10 @@
 package Autom3.libreplan2;
 
 import java.io.File;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.util.concurrent.TimeUnit;
-
+import BDD.JDBC;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,10 +15,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.postgresql.core.ConnectionFactory;
+
+
+
+import BDD.JDBC;
 
 public class CRI_01_AdministrationDesCriteresTest {
 	WebDriver driver;
-
+	JDBC datata = new JDBC();
+	
 	@Test
 	public void  libreplanTest() throws Exception {
 		System.out.println("Pas de test 1 - Connexion");
@@ -59,6 +67,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 		creetype2.assertCreerTypeCriterePage();
 		System.out.println("Pas de test 7 - Créer un critère - Sauver et continuer");
 		// Il faudra supprimer ou effectuer cette méthode
+		datata.deleteCritere();
 		creetype2.remplirFormulaireSauverContinuer();
 
 		System.out.println("Pas de test 8 - cliquer sur le bouton annuler ");

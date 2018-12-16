@@ -21,13 +21,26 @@ public class JDBC {
 		return new FlatXmlDataSetBuilder().build(new File(filename));
 	}
 	
+	public void deleteCritere() throws Exception {
+		Connection con = DriverManager.getConnection(JDBC_URL,USER,PASSWORD);
+		Class.forName(DRIVER);
+		Statement stmt = con.createStatement();	
+	/*	stmt.executeQuery("ALTER TABLE public.criterion_type DROP CONSTRAINT criterion_type_code_key;");
+		stmt.executeQuery("ALTER TABLE public.criterion_type DROP CONSTRAINT criterion_type_name_key;");*/
+		try {
+			stmt.executeQuery("DELETE FROM criterion_type WHERE name ='Critère - Test bouton';");
+		} catch (Exception e) {
+			System.out.println("La requête n'a pas été exécuté !" );
+		}
+		
+	}
+	
 	public void inserData(String path_to_file) throws Exception {
 		IDataSet dataset = readDataSet(path_to_file);
 		IDatabaseTester databaseTester =  new JdbcDatabaseTester(DRIVER,JDBC_URL,USER,PASSWORD);
 		databaseTester.setSetUpOperation(DatabaseOperation.CLEAN_INSERT);
 		databaseTester.setDataSet(dataset);
-		databaseTester.onSetup();
-		
+		databaseTester.onSetup();	
 	}
 	
 	public void deleteData(String path_to_file) throws Exception {
