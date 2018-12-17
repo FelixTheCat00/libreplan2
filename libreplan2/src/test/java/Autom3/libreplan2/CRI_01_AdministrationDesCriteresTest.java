@@ -1,39 +1,52 @@
 
 package Autom3.libreplan2;
 
+import java.beans.EventHandler;
 import java.io.File;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.concurrent.TimeUnit;
 import BDD.JDBC;
+import Outils.Highlighter;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.postgresql.core.ConnectionFactory;
-
-
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+import org.testng.annotations.Listeners;
 
 import BDD.JDBC;
 
-public class CRI_01_AdministrationDesCriteresTest {
+//@Listeners(TestNGListener.class)
+public class CRI_01_AdministrationDesCriteresTest  {
 	WebDriver driver;
 	JDBC datata = new JDBC();
-	
+
 	@Test
 	public void  libreplanTest() throws Exception {
+	 
 		System.out.println("Pas de test 1 - Connexion");
 
 		//Connexion à l'application
 		ConnexionTest pou = new ConnexionTest();
 		//Accession à la page calender
 		CalendarPage calendar = pou.libreplanTest();
+		
+		
+	
+		
 		//Vérification de la page calendar
 		calendar.assertCalendrier();
 
@@ -54,7 +67,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 		TypeCritereListPage tcl = creertype.remplirFormulaireAnnulation();
 		tcl.assertTitle();
 		tcl.assertFalseBoutonAnnuler();
-
+		
 		System.out.println("Pas de test 5 - Créer un critère - Enregistrer ");
 
 		CreerTypeCriterePage creetype1 = tcl.clickButtonCreer();
@@ -64,6 +77,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 		tcl1.assertCritereTestBoutonTableau();
 		System.out.println("Pas de test 6 - Créer un critère - Accès au formulaire");
 
+		
 		CreerTypeCriterePage creetype2 = tcl1.clickButtonCreer();
 		creetype2.assertCreerTypeCriterePage();
 		System.out.println("Pas de test 7 - Créer un critère - Sauver et continuer");
@@ -126,6 +140,8 @@ public class CRI_01_AdministrationDesCriteresTest {
 		tcl4.clickPopUpOK();
 		tcl4.assertConfirmationSuppressionCritere2();	
 
-	}
+		
+	}	
+	
 	
 }
