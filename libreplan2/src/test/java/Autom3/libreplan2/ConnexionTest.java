@@ -26,9 +26,8 @@ public class ConnexionTest {
 		//Création d'une instance de la classe LoginPage
 		LoginPage logpage = new LoginPage(driver);
 		Highlighter.highLightElement(driver, logpage.getUtilisateur_field());
-		Thread.sleep(3000);
 		Highlighter.highLightElement(driver, logpage.getMot_de_passe_login_field());
-		Thread.sleep(3000);
+	
 		//Wait pour être sûr de cliquer sur le bouton
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		

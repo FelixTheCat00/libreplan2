@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
+import Outils.Highlighter;
+
 import org.apache.commons.io.FileUtils;
 
 
@@ -76,6 +79,7 @@ public class TypeCritereListPage extends RessourcesPage {
 
 	public CreerTypeCriterePage clickButtonCreer() throws InterruptedException {
 		Thread.sleep(2000);
+		Highlighter.highLightElement(driver, button_creer_ressources);
 		button_creer_ressources.click();
 		return PageFactory.initElements(driver, CreerTypeCriterePage.class);
 	}
@@ -87,11 +91,13 @@ public class TypeCritereListPage extends RessourcesPage {
 
 	public void clickPopUpAnnuler() throws Exception {
 		Thread.sleep(2000);
+		Highlighter.highLightElement(driver, this.pop_up_bouton_annuler);
 		pop_up_bouton_annuler.click();
 	}
 
 	public void clickPopUpOK() throws Exception {
 		Thread.sleep(2000);
+		Highlighter.highLightElement(driver, this.pop_up_bouton_ok);
 		pop_up_bouton_ok.click();
 	}
 
@@ -145,6 +151,7 @@ public class TypeCritereListPage extends RessourcesPage {
 	public void assertTitle() throws Exception {
 		Thread.sleep(4000);
 		try {
+			
 			Assert.assertTrue("Vérification présence titre Types de critères Liste", this.titre_type_de_criteres.isDisplayed());
 		}catch(AssertionError e) {
 			System.out.println("La présence du titre du titre \'Types de critères Liste\' n'est pas vérifiée");
@@ -165,6 +172,7 @@ public class TypeCritereListPage extends RessourcesPage {
 	public void assertCritereTestBoutonTableau() throws Exception {
 		Thread.sleep(2000);
 		try {
+			Highlighter.highLightElement(driver, this.presence_critere_test_bouton);
 			Assert.assertTrue("Ajout à la liste de \'Critère - Test bouton \'", this.presence_critere_test_bouton.isDisplayed());
 		}catch(AssertionError e) {
 			System.out.println("Le \'Critère - Test bouton \' n'a pas été rajouté à la liste");
@@ -175,6 +183,7 @@ public class TypeCritereListPage extends RessourcesPage {
 	public void assertCritereTestBoutonTableau2() throws Exception {
 		Thread.sleep(2000);
 		try {
+			Highlighter.highLightElement(driver, this.presence_critere_test_bouton2);
 			Assert.assertTrue("Ajout à la liste de \'Critère - Test bouton 2\'", this.presence_critere_test_bouton2.isDisplayed());
 		}catch(AssertionError e) {
 			System.out.println("Le \'Critère - Test bouton \' n'a pas été rajouté à la liste");
@@ -198,6 +207,7 @@ public class TypeCritereListPage extends RessourcesPage {
 	public void assertPopUpConfirmation2() throws Exception {
 		Thread.sleep(2000);
 		try {
+			Highlighter.highLightElement(driver, this.message_confirmation_suppression_2);
 			Assert.assertTrue("Pop : confirmation suppression", this.message_confirmation_suppression_2.getText().equals("Supprimer Type de critère \"Critères - Test bouton 2\". Êtes-vous sûr ?"));
 		} catch (Exception e) {
 			System.out.println("Le message de confirmation de suppression de la pop up est incorrect ou ne s'est pas afficher.");

@@ -7,7 +7,7 @@ import org.junit.Test;
 public class GUP_01_GestionDunProfilTest {
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() throws Exception {
 		System.out.println("Pas de test 1 - Connexion");
 		//Connexion à l'application
 		ConnexionTest pou = new ConnexionTest();
@@ -24,6 +24,13 @@ public class GUP_01_GestionDunProfilTest {
 
 		CreerProfilPage creerprofil = profil.clickBoutonCreer();
 		creerprofil.assertNameFieldEmpty();
+		
+		System.out.println("Pas de test 4 - Créer un profil - Saisie des informations");
+
+		creerprofil.saisirNom("GigiGI");
+		creerprofil.associationRole(25);
+		creerprofil.assertAjoutRole();
 	}
+	
 
 }

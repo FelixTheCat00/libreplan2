@@ -6,7 +6,6 @@ public class ConfigurationPage extends GenericPage {
 
 	public ConfigurationPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 }

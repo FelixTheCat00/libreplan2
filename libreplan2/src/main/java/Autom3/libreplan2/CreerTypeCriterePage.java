@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
+import Outils.Highlighter;
+
 import org.junit.Assert;
 
 public class CreerTypeCriterePage extends RessourcesPage {
@@ -83,13 +86,21 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	}
 
 	public TypeCritereListPage remplirFormulaireAnnulation() throws Exception {
+		
 		this.clearName();
+		Highlighter.highLightElement(driver,champ_nom);
 		this.changeName("Critère - Test bouton");
+		Highlighter.highLightElement(driver,btn_type_critere_participant);
 		this.btn_type_critere_participant.click();
+		Highlighter.highLightElement(driver,type_critere_participant);
 		this.type_critere_participant.click();
+		Highlighter.highLightElement(driver,valeur_multiple);
 		this.valeurMultipleBox();
+		Highlighter.highLightElement(driver,hierarchie_box);
 		this.hierarchieBox();
+		Highlighter.highLightElement(driver,active_box);
 		this.activeBox();
+		Highlighter.highLightElement(driver,description_field);
 		this.description_field.sendKeys("Critère - Test bouton");
 		this.boutonAnnulerTypeCritere();
 		return PageFactory.initElements(driver, TypeCritereListPage.class);
@@ -173,6 +184,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 
 	public TypeCritereListPage boutonAnnulerTypeCritere() throws Exception {
 		Thread.sleep(2000);
+		Highlighter.highLightElement(driver,bouton_annuler);
 		this.bouton_annuler.click();
 
 		return PageFactory.initElements(driver, TypeCritereListPage.class);

@@ -6,7 +6,6 @@ public class ChargementRessourcesPage extends CalendarPage {
 
 	public ChargementRessourcesPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 }

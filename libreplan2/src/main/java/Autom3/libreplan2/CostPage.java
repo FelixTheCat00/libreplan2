@@ -6,7 +6,6 @@ public class CostPage extends GenericPage {
 
 	public CostPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 }

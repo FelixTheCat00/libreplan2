@@ -21,11 +21,21 @@ public class CalendarPage extends GenericPage {
 
 	public CalendarPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 			
 		public void assertCalendrier() throws InterruptedException {	
 			Assert.assertTrue("Présence de l'onglet Calendrier", onglet_calendrier.isDisplayed());
 		}
+
+
+		public WebElement getOnglet_calendrier() {
+			return onglet_calendrier;
+		}
+
+		public WebElement getField_name_project() {
+			return field_name_project;
+		}
+
+
 }

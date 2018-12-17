@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import Outils.Highlighter;
+
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -67,7 +69,11 @@ public class GenericPage {
 	public TypeCritereListPage ressourceOngletCritere() {
 
 		Actions actions = new Actions(driver);
+		Highlighter.highLightElement(driver, onglet_ressources);
+
 		actions.moveToElement(onglet_ressources).build().perform();
+		Highlighter.highLightElement(driver, driver.findElement(By.xpath("(//a[contains(text(),'Critère')])[1]")));
+
 		driver.findElement(By.xpath("(//a[contains(text(),'Critère')])[1]")).click();
 		return PageFactory.initElements(driver, TypeCritereListPage.class);
 
@@ -76,8 +82,12 @@ public class GenericPage {
 	public ProfilsPage configurationOngletProfils() throws InterruptedException {
 
 		Actions actions = new Actions(driver);
+		Highlighter.highLightElement(driver, onglet_configuration);
+
 		actions.moveToElement(onglet_configuration).build().perform();
 		Thread.sleep(2000);
+		Highlighter.highLightElement(driver,driver.findElement(By.xpath("//button[@class='z-menu-btn' and contains(.,'Configuration')]/following::a[@class='z-menu-item-cnt' and contains(.,'Profils')]")));
+
 		driver.findElement(By.xpath("//button[@class='z-menu-btn' and contains(.,'Configuration')]/following::a[@class='z-menu-item-cnt' and contains(.,'Profils')]")).click();
 		return PageFactory.initElements(driver, ProfilsPage.class);
 
