@@ -30,7 +30,7 @@ public class RessourcesPage extends GenericPage {
 	@FindBy(how = How.XPATH, using ="(//span[contains(text(),'Critère - Test bouton')])[1]")
 	WebElement deuxieme_ligne;
 	
-	//Types de critères deuxième ligne
+	//Types de critères titre deuxième ligne
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'2')]")
 	WebElement titre_type_de_criteres2;
 	

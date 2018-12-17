@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.concurrent.TimeUnit;
 import BDD.JDBC;
 import org.apache.commons.io.FileUtils;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
@@ -69,7 +70,7 @@ public class CRI_01_AdministrationDesCriteresTest {
 		// Il faudra supprimer ou effectuer cette méthode
 		datata.deleteCritere();
 		creetype2.remplirFormulaireSauverContinuer();
-
+		creetype2.assertAjoutMessage();
 		System.out.println("Pas de test 8 - cliquer sur le bouton annuler ");
 
 		TypeCritereListPage ressource_2 = creertype.boutonAnnulerTypeCritere();
@@ -123,8 +124,8 @@ public class CRI_01_AdministrationDesCriteresTest {
 		
 		System.out.println("Pas de test 18 - Supprimer un critère - Bouton[OK]");
 		tcl4.clickPopUpOK();
-		tcl4.assertConfirmationSuppressionCritere2();
-
+		tcl4.assertConfirmationSuppressionCritere2();	
 
 	}
+	
 }

@@ -48,13 +48,21 @@ public class GenericPage {
 	@FindBy(how = How.XPATH, using ="//button[contains(text(),'Ressources')]")
 	WebElement onglet_ressources;
 	
-	//Onglet Ressource
+	//Onglet Ressource_critères
 	@FindBy(how = How.XPATH, using ="(//a[contains(text(),'Critère')])[1]")
 	WebElement onglet_ressources_critere;
 	
 	//Onglet Calendrier
 	@FindBy(how = How.XPATH, using ="//button[contains(text(),'Calendrier')]")
 	WebElement onglet_calendrier;
+	
+	//Onglet Configuration
+	@FindBy(how = How.XPATH, using ="//button[@class='z-menu-btn' and contains(.,'Configuration')]")
+	WebElement onglet_configuration;
+	
+	//Onglet Configuration profil
+	@FindBy(how = How.XPATH, using ="//button[@class='z-menu-btn' and contains(.,'Configuration')]/following::a[@class='z-menu-item-cnt' and contains(.,'Profils')]")
+	WebElement onglet_configuration_profil;
 	
 	public TypeCritereListPage ressourceOngletCritere() {
 
@@ -65,6 +73,16 @@ public class GenericPage {
 
 		}
 	 
+	public ProfilsPage configurationOngletProfils() throws InterruptedException {
+
+		Actions actions = new Actions(driver);
+		actions.moveToElement(onglet_configuration).build().perform();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//button[@class='z-menu-btn' and contains(.,'Configuration')]/following::a[@class='z-menu-item-cnt' and contains(.,'Profils')]")).click();
+		return PageFactory.initElements(driver, ProfilsPage.class);
+
+	}
+ 
 
 
 

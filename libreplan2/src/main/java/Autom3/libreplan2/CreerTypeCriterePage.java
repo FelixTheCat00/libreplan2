@@ -49,7 +49,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	WebElement bouton_enregistrer;
 	
 	//Message de confirmation d'ajout
-	@FindBy(how = How.XPATH, using ="//div[@class='message_INFO']")
+	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Type de critère \"Critère - Test bouton\" enregistré')]")
 	WebElement message_confirmation_ajout;
 
 	//Champ titre

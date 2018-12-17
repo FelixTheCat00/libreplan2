@@ -30,7 +30,7 @@ public class JDBC {
 		try {
 			stmt.executeQuery("DELETE FROM criterion_type WHERE name ='Critère - Test bouton';");
 		} catch (Exception e) {
-			System.out.println("La requête n'a pas été exécuté !" );
+			
 		}
 		
 	}
