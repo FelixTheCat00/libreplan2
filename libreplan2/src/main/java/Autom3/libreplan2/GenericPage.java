@@ -26,6 +26,13 @@ public class GenericPage {
 	String utilisateur_login = "admin";
 	String mot_de_passe_login = "admin";
 
+	@FindBy(how = How.XPATH, using ="//table[contains(@id, '7-a')]//button[contains(@id, '7-b')]")
+	WebElement onglet_calendrier;
+
+	@FindBy(how = How.XPATH, using ="//a[@href='/libreplan/planner/index.zul;orders_list']")
+	WebElement Projets;
+
+	
 	//Champ d'indication de l'utilisateur connecté
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'admin')]")
 	WebElement utilisateur_indication;
@@ -56,7 +63,7 @@ public class GenericPage {
 
 	//Onglet Calendrier
 	@FindBy(how = How.XPATH, using ="//button[contains(text(),'Calendrier')]")
-	WebElement onglet_calendrier;
+	WebElement onglet_calendrier1;
 
 	//Onglet Configuration
 	@FindBy(how = How.XPATH, using ="//button[@class='z-menu-btn' and contains(.,'Configuration')]")
@@ -92,6 +99,22 @@ public class GenericPage {
 		return PageFactory.initElements(driver, ProfilsPage.class);
 
 	}
+	
+	//Méthode pour passer la souris sur l'onglet "Calendrier" puis clique sur l'item "Projets".
+	public CalendarPage clickLienCalendrierProjets() throws Exception {
+
+		//Utilisation de la classe Actions pour la fonction MouseOver
+		Actions action = new Actions(driver);
+		Thread.sleep(3000);
+		action.moveToElement(onglet_calendrier).build().perform();
+		Thread.sleep(3000);
+		Projets.click();
+		Thread.sleep(3000);
+		return PageFactory.initElements(driver, CalendarPage.class);
+
+
+	}
+
 
 
 
