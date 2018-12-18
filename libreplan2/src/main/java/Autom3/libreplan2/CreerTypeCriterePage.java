@@ -76,6 +76,9 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Modifier')]")
 	WebElement onglet_modifier;
 
+	@FindBy(how = How.XPATH, using ="//input[contains(@class,'z-combobox')]")
+	WebElement onglet_champ;
+	
 
 
 
@@ -90,6 +93,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 		this.clearName();
 		Highlighter.highLightElement(driver,champ_nom);
 		this.changeName("Critère - Test bouton");
+		Highlighter.highLightElement(driver,onglet_champ);
 		Highlighter.highLightElement(driver,btn_type_critere_participant);
 		this.btn_type_critere_participant.click();
 		Highlighter.highLightElement(driver,type_critere_participant);
@@ -121,6 +125,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	public TypeCritereListPage remplirFormulaireEnregister() {
 		this.clearName();
 		this.changeName("Critère - Test bouton");
+		Highlighter.highLightElement(driver,onglet_champ);
 		this.btn_type_critere_participant.click();
 		this.type_critere_participant.click();
 		this.valeurMultipleBox();

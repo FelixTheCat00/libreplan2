@@ -113,6 +113,7 @@ public class LoginPage {
 		utilisateur_field.sendKeys(utilisateur_login);
 		mot_de_passe_login_field.clear();
 		mot_de_passe_login_field.sendKeys(mot_de_passe_login);
+		Highlighter.highLightElement(driver,btn_se_connecter);
 		btn_se_connecter.submit();
 		return PageFactory.initElements(driver, CalendarPage.class);
 	}
