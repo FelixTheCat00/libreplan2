@@ -168,6 +168,7 @@ public class CreerTypeCriterePage extends RessourcesPage {
 	}
 
 	public void clickSauverContinuer(){
+		Highlighter.highLightElement(driver,bouton_sauver_continuer);
 		this.bouton_sauver_continuer.click();
 	}
 
