@@ -2,6 +2,8 @@ package Autom3.libreplan2;
 
 import java.util.List;
 
+import javax.security.auth.login.Configuration;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -25,8 +25,6 @@ public class JDBC {
 		Connection con = DriverManager.getConnection(JDBC_URL,USER,PASSWORD);
 		Class.forName(DRIVER);
 		Statement stmt = con.createStatement();	
-	/*	stmt.executeQuery("ALTER TABLE public.criterion_type DROP CONSTRAINT criterion_type_code_key;");
-		stmt.executeQuery("ALTER TABLE public.criterion_type DROP CONSTRAINT criterion_type_name_key;");*/
 		try {
 			stmt.executeQuery("DELETE FROM criterion_type WHERE name ='Critère - Test bouton';");
 		} catch (Exception e) {

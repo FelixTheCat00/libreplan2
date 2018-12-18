@@ -21,18 +21,65 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
+/**
+ * @author formation
+ *
+ */
 public class TypeCritereListPage extends RessourcesPage {
 
 	//Bouton creer ressource
 	@FindBy(how = How.XPATH, using ="//table/descendant::td[contains(.,'Créer')]")
 	WebElement button_creer_ressources;
 
+	//Bouton de supression du critère 2
 	@FindBy(how = How.XPATH, using ="(//img[contains(@src,'borrar')])[2]")
 	WebElement suppression_critere_2;
 
+	//Bouton annuler de la pop up
 	@FindBy(how = How.XPATH, using ="(//td[contains(text(),'Annuler')])[2]")
 	WebElement pop_up_bouton_annuler;
 
+	//Bouton OK de la pop up
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'OK')]")
 	WebElement pop_up_bouton_ok;
 
@@ -40,33 +87,43 @@ public class TypeCritereListPage extends RessourcesPage {
 	@FindBy(how = How.XPATH, using ="//div[@class='z-column-cnt' and contains(.,'Nom')]")
 	WebElement table_titre_nom;
 
+	//Titre "code" de la table des types de critères
 	@FindBy(how = How.XPATH, using ="//div[@class='z-column-cnt' and contains(.,'Code')]")
 	WebElement table_titre_code;
 
+	//Titre "type" de la table des types de critères
 	@FindBy(how = How.XPATH, using ="//div[@class='z-column-cnt' and contains(.,'Type')]")
 	WebElement table_titre_type;
 
+	//Titre "Activé" de la table des types de critères
 	@FindBy(how = How.XPATH, using ="//div[@class='z-column-cnt' and contains(.,'Activé')]")
 	WebElement table_titre_active;
 
+	//Titre "Opérations" de la table des types de critères
 	@FindBy(how = How.XPATH, using ="//div[@class='z-column-cnt' and contains(.,'Opérations')]")
 	WebElement table_titre_operations;
 
+	//Titre de la page de stypes de critères
 	@FindBy(how = How.XPATH, using ="//div[contains(text(),'Types de critères Liste')]")
 	WebElement type_critere_titre;
 
+	//Bouton annuler
 	@FindBy(how = How.XPATH, using ="//td[@class='z-button-cm' and contains(.,'Annuler')]")
 	WebElement bouton_annuler;
 
+	//Champ pour l'ajout de "critère test bouton" dans le tableau
 	@FindBy(how = How.XPATH, using ="//span[@title='Critère - Test bouton']")
 	WebElement presence_critere_test_bouton;
 	
+	//Champ pour l'ajout de "critère test bouton 2" dans le tableau
 	@FindBy(how = How.XPATH, using ="//span[@title='Critère - Test bouton' and contains(text(),'Critères - Test bouton 2')]")
 	WebElement presence_critere_test_bouton2;
 	
+	//Message confirmation du critère 2
 	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Supprimer Type de critère \"Critères - Test bouton 2\". Êtes-vous sûr ?')]")
 	WebElement message_confirmation_suppression_2;
 
+	//Message suppression du critère 2
 	@FindBy(how = How.XPATH, using ="//span[contains(text(),'Critères - Test bouton 2')]")
 	WebElement message_critere_2_suppression_confirmation;
 
@@ -77,6 +134,9 @@ public class TypeCritereListPage extends RessourcesPage {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see Autom3.libreplan2.RessourcesPage#clickButtonCreer()
+	 */
 	public CreerTypeCriterePage clickButtonCreer() throws InterruptedException {
 		Thread.sleep(2000);
 		Highlighter.highLightElement(driver, button_creer_ressources);
@@ -95,12 +155,18 @@ public class TypeCritereListPage extends RessourcesPage {
 		pop_up_bouton_annuler.click();
 	}
 
+	
+	
 	public void clickPopUpOK() throws Exception {
 		Thread.sleep(2000);
 		Highlighter.highLightElement(driver, this.pop_up_bouton_ok);
 		pop_up_bouton_ok.click();
 	}
 
+	
+	/**
+	 * @throws Exception
+	 */
 	public void assertTypeCritereListePage() throws Exception {
 		try {
 			Assert.assertTrue("Vérification présence bouton créer", this.button_creer_ressources.isDisplayed());
@@ -148,6 +214,9 @@ public class TypeCritereListPage extends RessourcesPage {
 
 	}
 	
+	/**
+	 * @throws Exception
+	 */
 	public void assertTitle() throws Exception {
 		Thread.sleep(4000);
 		try {
@@ -159,6 +228,12 @@ public class TypeCritereListPage extends RessourcesPage {
 		}
 	}
 
+	
+	
+	
+	/**
+	 * @throws InterruptedException
+	 */
 	public void assertFalseBoutonAnnuler() throws InterruptedException {
 		Thread.sleep(2000);
 		try {
@@ -169,6 +244,9 @@ public class TypeCritereListPage extends RessourcesPage {
 		}
 	}
 	
+	/**
+	 * @throws Exception
+	 */
 	public void assertCritereTestBoutonTableau() throws Exception {
 		Thread.sleep(2000);
 		try {
@@ -180,6 +258,9 @@ public class TypeCritereListPage extends RessourcesPage {
 		}
 	}
 	
+	/**
+	 * @throws Exception
+	 */
 	public void assertCritereTestBoutonTableau2() throws Exception {
 		Thread.sleep(2000);
 		try {
@@ -192,7 +273,10 @@ public class TypeCritereListPage extends RessourcesPage {
 	}
 	
 	
-	
+	/**
+	 * Méthode de confirmation de la suppression du message 
+	 * @throws Exception
+	 */
 	public void assertNonModification() throws Exception {
 		Thread.sleep(2000);
 		try {
@@ -201,9 +285,13 @@ public class TypeCritereListPage extends RessourcesPage {
 			System.out.println(" \'Critère - Test bouton\' a été modifié dans le tableau");
 			throw e;
 		}
-
 	}
 	
+	
+	/**
+	 * Méthode de confirmation de la suppression du message 
+	 * @throws Exception
+	 */
 	public void assertPopUpConfirmation2() throws Exception {
 		Thread.sleep(2000);
 		try {
@@ -230,6 +318,10 @@ public class TypeCritereListPage extends RessourcesPage {
 
 	}
 	
+	/**
+	 * Méthode de confirmation de la suppression du "critère - Test bouton 2" dans le tableau des types de critères
+	 * @throws InterruptedException
+	 */
 	public void assertConfirmationSupression2() throws InterruptedException {
 		Thread.sleep(2000);
 		try {
@@ -240,17 +332,18 @@ public class TypeCritereListPage extends RessourcesPage {
 		}
 	}
 	
+	/**
+	 * Méthode de confirmation de la suppression du "critère - Test bouton 2" dans le tableau des types de critères
+	 * @throws Exception
+	 */
 	public void assertConfirmationSuppressionCritere2() throws Exception {
 		Thread.sleep(2000);
-
 		try {
 			Assert.assertTrue("Message confirmation suppression critère 2", this.message_critere_2_suppression_confirmation.isDisplayed());
 		} catch (Exception e) {
 			System.out.println("Le message de confirmation de suppression du critère 2 ne s'est pas affiché!");
 			throw e;
 		}
-
-
 	}
 	
 

@@ -6,7 +6,6 @@ public class ZonePersoPage extends GenericPage {
 
 	public ZonePersoPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 }

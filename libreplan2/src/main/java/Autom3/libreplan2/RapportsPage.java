@@ -6,7 +6,6 @@ public class RapportsPage extends GenericPage {
 
 	public RapportsPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 }

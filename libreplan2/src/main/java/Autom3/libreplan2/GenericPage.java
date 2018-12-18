@@ -32,7 +32,7 @@ public class GenericPage {
 	@FindBy(how = How.XPATH, using ="//a[@href='/libreplan/planner/index.zul;orders_list']")
 	WebElement Projets;
 
-	
+
 	//Champ d'indication de l'utilisateur connecté
 	@FindBy(how = How.XPATH, using ="//td[contains(text(),'admin')]")
 	WebElement utilisateur_indication;
@@ -73,6 +73,10 @@ public class GenericPage {
 	@FindBy(how = How.XPATH, using ="//button[@class='z-menu-btn' and contains(.,'Configuration')]/following::a[@class='z-menu-item-cnt' and contains(.,'Profils')]")
 	WebElement onglet_configuration_profil;
 
+
+	@FindBy(how = How.XPATH, using ="//button[@class='z-menu-btn' and contains(.,'Ressources')]/following::a[@class='z-menu-item-cnt' and contains(.,\"Types d'avancement\")]") 
+	WebElement onglet_ressources_item_type_avancement;
+
 	public TypeCritereListPage ressourceOngletCritere() {
 
 		Actions actions = new Actions(driver);
@@ -99,7 +103,7 @@ public class GenericPage {
 		return PageFactory.initElements(driver, ProfilsPage.class);
 
 	}
-	
+
 	//Méthode pour passer la souris sur l'onglet "Calendrier" puis clique sur l'item "Projets".
 	public CalendarPage clickLienCalendrierProjets() throws Exception {
 
@@ -115,6 +119,14 @@ public class GenericPage {
 
 	}
 
+	public TypeAvancementPage clickOngletRessourcesItemTypeAvancement() {
+
+		Actions actions = new Actions(driver);
+		actions.moveToElement(onglet_ressources).build().perform();
+		onglet_ressources_item_type_avancement.click();
+		return PageFactory.initElements(driver, TypeAvancementPage.class);
+
+	}
 
 
 
